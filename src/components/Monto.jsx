@@ -30,7 +30,7 @@ const Monto = () => {
                 )}
             </div>
             <Link to='/gracias' >
-                <a href="#" className='btn btn--full'>Lo quiero </a>
+                <button className='btn btn--full' >Lo quiero </button>
             </Link>
         </div>
      );

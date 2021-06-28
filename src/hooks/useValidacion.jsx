@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import {useState} from 'react';
 const useValidacion = ({email, dni ,placa, celular} ) => {
     const [errorForm, setErrorForm]=useState(null);
     const validar=()=>{

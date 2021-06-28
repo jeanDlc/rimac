@@ -39,9 +39,18 @@ const Plan = () => {
                 )  }
                 
                 <main className='plan__main container' >
-                    <BtnVolver/>
+                    {pantallaDesktop && <BtnVolver/>}
                     <div className="main__encabezados">
-                        <h2 className='encabezado encabezado--capitalize' >¡hola, <span className='encabezado__enfasis' >{usuario.nombre} !</span> </h2>
+                        <h2 className='encabezado encabezado--capitalize' >
+                            {pantallaDesktop?
+                            <>
+                                ¡hola, <span className='encabezado__enfasis' >{usuario.nombre} !</span> 
+                            </>
+                            :
+                            'Mira las coberturas'
+                        }
+                            
+                        </h2>
                         <h3 className='encabezado-secundario' >Conoce las coberturas de tu plan</h3>
                     </div>
                     <Card>
@@ -51,7 +60,7 @@ const Plan = () => {
                                 Wolksvagen 2019 golf
                             </h3>
                         </div>
-                        <img className='card__imagen'  src="/armaPlanAvatar.svg" alt="Arma tu plan" draggable='false' />
+                        <img className='card__imagen'  src="/icons/armaPlanAvatar.svg" alt="Arma tu plan" draggable='false' />
                     </Card>
                     <ModificarSuma/>
                     <Divisor/>

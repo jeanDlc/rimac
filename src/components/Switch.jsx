@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-const Switch = () => {
-    const [on,setOn]=useState(true);
+import React from 'react';
+const Switch = ({onChange}) => {
+
     return ( 
         <label className='switch  ' >
-            <input type="checkbox"  className='switch__input'  />
+            <input type="checkbox" 
+                onChange={onChange}  
+                className='switch__input'  
+            />
             <span className='switch__slider' ></span>
         </label>
      );

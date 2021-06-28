@@ -137,26 +137,38 @@ p{
     width: 10rem;
   }
 }
-.hero{
-  background-image: url("./bgPanel.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  min-height: 90vh;
+
+@media(min-width:768px){
+  .hero{
+    background-image: url("./bgPanel.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 90vh;
+  }
 }
+
 .hero__contenido{
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem ;
+  display: flex;
+  flex-direction: row-reverse;
+}
+@media(min-width:768px){
+  .hero__contenido{
+    display: block;
+  }
 }
 .hero__contenedor-img{
   text-align: center;
   margin-bottom: 5rem;
+  margin-top: 2rem;
 }
 .hero__textos{
   max-width: 95%;
-  margin: 3rem auto;
+  margin: 0 auto;
 }
 .hero__titulo{
-  font-size: 3.6rem;
+  font-size: 2.5rem;
   font-weight: 400;
   text-transform: capitalize;
   margin-bottom: 2rem;
@@ -212,13 +224,16 @@ p{
   margin-top: .1rem;
 }
 .form__titulo{
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   color: var(--gris1);
   margin-bottom: 1.5rem;
 }
 @media(min-width:768px){
   .form-contenedor{
     max-width: 85%;
+  }
+  .form__titulo{
+    font-size: 2.8rem;
   }
 }
 @media(min-width:1024px){
@@ -305,7 +320,8 @@ p{
   display: grid;
   grid-template-columns: 2fr 8fr;
   align-items: center;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 1rem 3.5rem;
 }
 
 @media(min-width:1024px){
@@ -318,6 +334,7 @@ p{
 }
 .sidebar{
   padding: 1rem;
+  background-color: #F7F8FC;
 }
 .sidebar-lista {
   list-style: none;
@@ -516,13 +533,28 @@ p{
   margin-bottom: 1.5rem;
   align-items: center;
 }
-.cobertura__btn-ver-mas{
+.cobertura__btn-flecha{
   position: absolute;
   background-color: transparent;
   border: none;
   top: 0;
   right: 0;
   cursor: pointer;
+}
+.cobertura__btn-ver-mas{
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gris3);
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+.cobertura__btn-ver-mas--activo{
+  color: var(--morado);
+}
+.cobertura__acciones{
+  width: 100%;
 }
 .cobertura__icono{
   margin-right: 1rem;

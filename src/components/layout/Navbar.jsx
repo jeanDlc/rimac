@@ -7,7 +7,7 @@ const Navbar = () => {
         <nav className='navbar container' >
             <Link to='/'  >
                 <h1>
-                    <img  className='navbar__imagen-logo' src="/logoRimac.svg" alt="Rimac" />
+                    <img  className='navbar__imagen-logo' src="/icons/logoRimac.svg" alt="Rimac" />
                 </h1>
             </Link>
             <div className="navbar__opciones">

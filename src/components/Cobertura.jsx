@@ -3,12 +3,21 @@ import seguroContext from '../context/seguro/seguroContext';
 import Switch from './Switch';
 import { useMediaQuery } from 'react-responsive';
 const Cobertura = ({nombre='', descripcion='', valor=0, icono='', idCobertura}) => {
+    //breakpoint para pantalla movil
     const pantallaMovil = useMediaQuery({ query: '(max-width: 768px)' });
+
     const {agregarCobertura,eliminarCobertura}=useContext(seguroContext);
     const [verDescripcion,setVerDescripcion]=useState(true);
     const [agregar,setAgregar]=useState(true);
     const toogleCobertura=()=>{
         setAgregar(!agregar);
+    }
+    const cambio=e=>{
+        if(e.target.checked){
+            agregarCobertura(valor, idCobertura);
+        }else{
+            eliminarCobertura(valor, idCobertura);
+        }
     }
     return ( 
         <li className='cobertura cobertura--movil' >
@@ -17,7 +26,7 @@ const Cobertura = ({nombre='', descripcion='', valor=0, icono='', idCobertura}) 
 
                 <div className='cobertura__encabezado' >
                     <h3 className='cobertura__nombre' >{nombre} </h3>
-                    {pantallaMovil && <Switch/>  }
+                    {pantallaMovil && <Switch onChange={cambio} />  }
                     
                 </div>
                 
@@ -52,13 +61,15 @@ const Cobertura = ({nombre='', descripcion='', valor=0, icono='', idCobertura}) 
                 
                 {pantallaMovil? 
                     <>
-                        
                         <button 
+                            className='cobertura__btn-ver-mas cobertura__btn-ver-mas--activo'
                             onClick={()=>setVerDescripcion(!verDescripcion)} 
-                        >Ver más</button>
+                        >  
+                            {verDescripcion? 'Ver menos': 'Ver más'}
+                        </button>
                     </>
                     :  
-                    <button className='cobertura__btn-ver-mas' 
+                    <button className='cobertura__btn-flecha' 
                         onClick={()=>setVerDescripcion(!verDescripcion)}
                     >
                         {verDescripcion? 

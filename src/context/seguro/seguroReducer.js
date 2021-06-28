@@ -16,7 +16,7 @@ export default (state, action)=>{
             return{
                 ...state,
                 monto:action.payload.monto,
-                coberturasID:state.coberturasID.filter(id=>id!=action.payload.idCobertura)
+                coberturasID:state.coberturasID.filter(id=>id!==action.payload.idCobertura)
             }
         case LIMPIAR_STATE_MONTO:
             return {
