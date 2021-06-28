@@ -5,7 +5,7 @@ import Home from './components/pages/Home';
 import Plan from './components/pages/Plan';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import Gracias from './components/pages/Gracias';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -15,6 +15,9 @@ ReactDOM.render(
         </Route>
         <Route path='/arma-tu-plan' >
           <Plan/>
+        </Route>
+        <Route path='/gracias' >
+          <Gracias/>
         </Route>
       </Switch>
     </BrowserRouter>
