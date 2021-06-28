@@ -36,6 +36,67 @@ p{
 .divisor{
   border: 0.1px solid #E4E8F7
 }
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 4.6rem;
+  height: 2.6rem;
+}
+.switch--absolute{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.switch__input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch__slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #E4E8F7;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 3.4rem;
+}
+.switch__slider::before{
+  position: absolute;
+  content: "";
+  height: 2rem;
+  width: 2rem;
+  left: 0.3rem;
+  bottom: 0.3rem;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+.switch__input:checked + .switch__slider{
+  background-color: var(--verde1);
+}
+.switch__input:focus + .switch__slider{
+  box-shadow: 0 0 1px var(--verde1);
+}
+.switch__input:checked + .switch__slider::before{
+  -webkit-transform: translateX(2rem);
+  -ms-transform: translateX(2rem);
+  transform: translateX(2rem);
+}
+.alerta{
+  padding: 1rem;
+  font-size: .8rem;
+  margin: .1rem 0 .5rem 0;
+  font-weight: 700;
+}
+.alerta--error{
+  background-color: #f56676;
+  color: white;
+}
 .container{
   max-width: 120rem;
   margin: 0 auto;
@@ -62,6 +123,11 @@ p{
 }
 .navbar__numero{
   color:var(--morado) ;
+  display: flex;
+  align-items: center;
+}
+.navbar__img-phone{
+  margin-right: .5rem;
 }
 @media(min-width:768px){
   .navbar__consulta{
@@ -108,6 +174,9 @@ p{
   color: var(--rojoPrincipal);
 }
 @media(min-width:768px){
+  .hero__titulo{
+    font-size: 3.6rem;
+  }
   .hero__textos{
     max-width: 70%;
   }
@@ -136,6 +205,12 @@ p{
   max-width: 95%;
   margin: 0 auto;
 }
+.form__error{
+  color: var(--rojoPrincipal);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: .1rem;
+}
 .form__titulo{
   font-size: 2.8rem;
   color: var(--gris1);
@@ -163,6 +238,12 @@ p{
   outline-style: none;
   font-size: 1rem;
   color: var(--gris1);
+}
+.input--doc{
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+.select-input{
+  border-radius: 0.4rem 0 0 0.4rem;
 }
 .form__control-checkbox{
   display: flex;
@@ -201,6 +282,9 @@ p{
   min-width: 18rem;
   text-align: center;
   
+}
+.btn--full{
+  width: 100%;
 }
 .btn:hover{
   background-color: #bb2f38;
@@ -270,7 +354,7 @@ p{
   }
 }
 .encabezado{
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: var(--gris1);
   margin-bottom: 1rem;
   font-weight: 400;
@@ -340,6 +424,7 @@ p{
   color: var(--gris3);
   font-size: 1rem;
   text-transform: capitalize;
+  margin-bottom: .8rem;
 }
 @media(min-width:768px){
   .card__titulo{
@@ -421,7 +506,24 @@ p{
   align-items: flex-start;
   margin: 2.5rem 0;
 }
-
+.cobertura--movil{
+  position: relative;
+}
+.cobertura__encabezado{
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.cobertura__btn-ver-mas{
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
 .cobertura__icono{
   margin-right: 1rem;
 }
@@ -453,7 +555,18 @@ p{
 .monto{
   padding: 1rem;
 }
-
+.monto--sidebar{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  padding:0 3rem;
+}
+@media(min-width:920px){
+  .monto--sidebar{
+    display: inline-block;
+    max-width: 25rem;
+  }
+}
 .monto__titulo{
   font-weight: 700;
   font-size: 1.2rem;
@@ -469,6 +582,7 @@ p{
   text-transform: lowercase;
   font-size: 1.2rem;
   color: var(--gris2);
+  margin-bottom: 1.5rem;
 }
 .monto__descripcion{
   margin-top: 3rem;
@@ -497,22 +611,25 @@ p{
 .gracias__contenedor{
   display: grid;
   gap: 1.5rem;
+  margin-top: 3rem;
 }
 .gracias__hero{
   text-align: center;
 }
-
-@media(max-width:768px){
-  .gracias__hero{
-    
-  }
-  
+.gracias__imagen{
+  max-width: 100%;
 }
 @media(min-width:768px){
   .gracias__contenedor{
-    grid-template-columns: 3fr 4fr;
+    grid-template-columns: 2fr 3fr;
+    
   }
-  
+}
+@media(min-width:1024px){
+  .gracias__contenedor{
+    grid-template-columns: 3fr 4fr;
+    
+  }
 }
 .gracias__textos{
   padding: 1.5rem;

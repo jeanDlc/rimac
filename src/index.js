@@ -6,21 +6,27 @@ import Plan from './components/pages/Plan';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Gracias from './components/pages/Gracias';
+import UsuarioState from './context/usuario/UsuarioState';
+import SeguroState from './context/seguro/SeguroState';
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/' >
-          <Home />
-        </Route>
-        <Route path='/arma-tu-plan' >
-          <Plan/>
-        </Route>
-        <Route path='/gracias' >
-          <Gracias/>
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <UsuarioState>
+      <SeguroState>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/' >
+              <Home />
+            </Route>
+            <Route path='/arma-tu-plan' >
+              <Plan/>
+            </Route>
+            <Route path='/gracias' >
+              <Gracias/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </SeguroState>
+    </UsuarioState>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useContext, useEffect} from 'react';
 import Layout from '../layout/Layout';
 import BtnVolver from '../BtnVolver';
 import Card from '../Card';
@@ -7,12 +7,20 @@ import BarraProgreso from '../BarraProgreso';
 import ListaCoberturas from '../ListaCoberturas';
 import Monto from '../Monto';
 import Divisor from '../Divisor';
+import usuarioContext from '../../context/usuario/usuarioContext';
+import { useHistory } from 'react-router';
+import ModificarSuma from '../ModificarSuma';
 const Plan = () => {
-    const [monto, setMonto]=useState(20)
-    const [sumaAsegurada, setSumaAsegurada]=useState(14300);
-  
+    const history=useHistory();
+    const {usuario, hayUsuario}=useContext(usuarioContext);
     const pantallaDesktop = useMediaQuery({ query: '(min-width: 768px)' })
-      
+
+     useEffect(()=>{
+        if(!hayUsuario){
+        history.push('/');
+        }
+     },[hayUsuario]) 
+
     return ( 
         <Layout>
             <div className='plan' >
@@ -33,7 +41,7 @@ const Plan = () => {
                 <main className='plan__main container' >
                     <BtnVolver/>
                     <div className="main__encabezados">
-                        <h2 className='encabezado encabezado--capitalize' >¡hola, <span className='encabezado__enfasis' >Juan!</span> </h2>
+                        <h2 className='encabezado encabezado--capitalize' >¡hola, <span className='encabezado__enfasis' >{usuario.nombre} !</span> </h2>
                         <h3 className='encabezado-secundario' >Conoce las coberturas de tu plan</h3>
                     </div>
                     <Card>
@@ -45,22 +53,7 @@ const Plan = () => {
                         </div>
                         <img className='card__imagen'  src="/armaPlanAvatar.svg" alt="Arma tu plan" draggable='false' />
                     </Card>
-                    <section >
-                        <div className='suma-asegurada' >
-                            <div className='suma-asegurada__textos'>
-                                <p className='suma-asegurada__titulo' >Indica la suma asegurada</p>
-                                <div className='suma-asegurada__rangos'>
-                                    <p className='suma-asegurada__min' >Min: $12 500</p>
-                                    <p>Max: $16 500</p>
-                                </div>
-                            </div>
-                            <div className='suma-asegurada__botones' >
-                                <button className='suma-asegurada__boton' >-</button>
-                                <p className='suma-asegurada__valor' >$ 14300</p>
-                                <button className='suma-asegurada__boton' >+</button>
-                            </div>
-                        </div>
-                    </section>
+                    <ModificarSuma/>
                     <Divisor/>
                     <ListaCoberturas/>
                 </main>

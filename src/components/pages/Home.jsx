@@ -1,7 +1,13 @@
+import { useEffect, useContext } from 'react';
+import seguroContext from '../../context/seguro/seguroContext';
 import Layout from '../layout/Layout';
 import Hero from '../Hero';
 import Formulario from '../Formulario';
 function Home() {
+  const {reiniciarMonto}=useContext(seguroContext);
+  useEffect(()=>{
+    reiniciarMonto();
+  },[]);
   return (
     <Layout>
       <div className='grid' >
@@ -15,7 +21,7 @@ function Home() {
           </main>
       </div>
       
-      content 
+       
     </Layout>
   );
 }
