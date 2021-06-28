@@ -32,11 +32,14 @@ const UsuarioState = (props) => {
                 type:NUEVO_USUARIO,
                 payload:nuevoU
             })
-            return true;
+            return true
         } catch (error) {
             dispatch({
                 type:ERROR_USUARIO,
-                payload:initialState.usuario
+                payload:{
+                    usuario:initialState.usuario,
+                    mensaje:'No se encontró el usuario'
+                }
             })
         }
         

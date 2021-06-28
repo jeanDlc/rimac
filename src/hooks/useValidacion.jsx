@@ -28,7 +28,10 @@ const useValidacion = ({email, dni ,placa, celular} ) => {
         }
         return Object.keys(err).length===0;
     }
-    return {errorForm ,validar }
+    const limpiarErrorForm=()=>{
+        setErrorForm(null);
+    }
+    return {errorForm ,validar , limpiarErrorForm}
 }
  
 export default useValidacion;

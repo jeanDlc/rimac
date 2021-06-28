@@ -9,8 +9,8 @@ const Formulario = () => {
     const [acepto, setAcepto]=useState(true);
     const estadoInicial={email:'', dni:'', placa:'', celular:''}
     const [formulario, setFormulario]=useState(estadoInicial);
-    const {nuevoUsuario}=useContext(usuarioContext);
-    const {errorForm, validar}=useValidacion(formulario);
+    const {nuevoUsuario,mensaje}=useContext(usuarioContext);
+    const {errorForm, validar, limpiarErrorForm}=useValidacion(formulario);
     const toogleInputDoc=e=>{
         setConDni(!conDni)
     }
@@ -32,20 +32,18 @@ const Formulario = () => {
         //validar el formulario y verificar validación
         const pasoValidacion= validar();
         if(!pasoValidacion) return false;
-
+        limpiarErrorForm();
         let exitoso=false;
         //métodos para buscar cliente: con DNI|email
         if(!conDni){
             exitoso=await  nuevoUsuario(formulario.email, 'email', formulario.celular);
             if (exitoso) history.push('/arma-tu-plan');
         }
-       
-        
-        
     }
     return ( 
         <form className='form form-contenedor' onSubmit={handleSubmit} >
             <h2 className='form__titulo' >Déjanos tus datos</h2>
+            {mensaje && <p className='alerta alerta--error' >{mensaje} </p> }
             <div className='form__control' >
                 <div style={{display:'grid', gridTemplateColumns:'1fr 3fr'}} >
                     <select onChange={toogleInputDoc} className='input select-input' name="" id="">

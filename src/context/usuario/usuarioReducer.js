@@ -11,8 +11,8 @@ export default (state, action)=>{
         case ERROR_USUARIO:
             return {
                 ...state,
-                usuario:action.payload,
-                mensaje:'Hubo un error',
+                usuario:action.payload.usuario,
+                mensaje:action.payload.mensaje,
                 hayUsuario:false
             }
         default : return state;

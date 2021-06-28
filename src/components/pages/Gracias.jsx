@@ -1,12 +1,21 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Layout from '../layout/Layout';
 import seguroContext from '../../context/seguro/seguroContext';
 import usuarioContext from '../../context/usuario/usuarioContext';
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive';
+import { useHistory } from 'react-router';
 const Gracias = () => {
+    const history=useHistory();
+    //de ha pedido el monto disponible en esta  página
     const {monto}=useContext(seguroContext);
-    const {usuario}=useContext(usuarioContext);
+    const {usuario,hayUsuario}=useContext(usuarioContext);
     const pantallaDesktop = useMediaQuery({ query: '(min-width: 768px)' })
+    useEffect(()=>{
+        if(!hayUsuario){
+            //si no hay usuaio-->redireccionar a inicio
+            history.push('/');
+        }
+    },[hayUsuario])
     return ( 
         <Layout>
             <div className='gracias__contenedor' >
