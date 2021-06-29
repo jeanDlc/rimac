@@ -4,16 +4,17 @@ const useValidacion = ({email, dni ,placa, celular} ) => {
     const validar=()=>{
         let err= {};
         //validar cada uno de los campos
-        if(email.trim==='' || email.length===0){
+        if(!email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)){
             err.email='Email no válido'
         }
-        if(placa.trim==='' || placa.length===0){
+        if(!placa || !/^[A-z]{3}-[1-9]{3}|^[A-Z]{1}[1-9]{1}[A-Z]{1}-[1-9]{3}|^[1-9]{4}-[A-Z,1-9]{2}|^[A-z]{2}-[1-9]{4}$/.test(placa) ){
+            //ejm de placa: ABC-458
             err.placa='Placa no válida';
         }
-        if(celular.trim==='' || celular.length===0){
+        if(!celular || !/(9)[ -]*([0-9][ -]*){8}/.test(celular) || celular.length>9){
             err.celular='Celular no válido'
         }
-        if(dni.trim==='' || dni.length===0){
+        if(!dni || !/([0-9][ -]*){8}/.test(dni) || dni.length>8 ){
             err.dni='DNI no válido'
         }
         if(err.dni && err.email){
