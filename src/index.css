@@ -294,7 +294,7 @@ p{
   cursor: pointer;
   transition: all .3s ease-out;
   display: inline-block;
-  min-width: 18rem;
+  
   text-align: center;
   
 }
@@ -315,6 +315,7 @@ p{
 .plan{
   display: grid;
   gap: 1rem;
+  
 }
 .plan__progreso{
   display: grid;
@@ -591,12 +592,13 @@ p{
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 1rem;
-  padding:0 3rem;
+  align-items: center;
 }
 @media(min-width:920px){
   .monto--sidebar{
     display: inline-block;
     max-width: 25rem;
+    padding:0 3rem;
   }
 }
 .monto__titulo{
@@ -606,15 +608,28 @@ p{
 }
 .monto__valor{
   font-weight: 400;
-  font-size: 2.8rem;
-  margin: 1.2rem 0;
+  font-size: 2.4rem;
 }
 .monto__periodo{
-  font-family: var(--fuenteRoboto);
-  text-transform: lowercase;
-  font-size: 1.2rem;
-  color: var(--gris2);
-  margin-bottom: 1.5rem;
+  font-family: var(--fuenteLato);
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: var(--gris1);
+  font-weight: 700;
+}
+@media(min-width:768px){
+  .monto__valor{
+    font-size: 2.8rem;
+    margin: 1.2rem 0;
+  }
+  .monto__periodo{
+    font-family: var(--fuenteRoboto);
+    text-transform: lowercase;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--gris2);
+    margin-bottom: 1.5rem;
+  }
 }
 .monto__descripcion{
   margin-top: 3rem;
