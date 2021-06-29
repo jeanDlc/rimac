@@ -6,7 +6,7 @@ const Cobertura = ({nombre='', descripcion='', valor=0, icono='', idCobertura}) 
     //breakpoint para pantalla movil
     const pantallaMovil = useMediaQuery({ query: '(max-width: 768px)' });
 
-    const {agregarCobertura,eliminarCobertura}=useContext(seguroContext);
+    const {agregarCobertura,eliminarCobertura,coberturasID}=useContext(seguroContext);
     const [verDescripcion,setVerDescripcion]=useState(true);
     const [agregar,setAgregar]=useState(true);
     const toogleCobertura=()=>{
@@ -26,13 +26,17 @@ const Cobertura = ({nombre='', descripcion='', valor=0, icono='', idCobertura}) 
 
                 <div className='cobertura__encabezado' >
                     <h3 className='cobertura__nombre' >{nombre} </h3>
-                    {pantallaMovil && <Switch onChange={cambio} />  }
+                    {pantallaMovil && (
+                        <Switch 
+                            checked={coberturasID.includes(idCobertura)}
+                            onChange={cambio}  />
+                    )  }
                     
                 </div>
                 
                 {!pantallaMovil && (
                     <div>
-                        {agregar?
+                        {!coberturasID.includes(idCobertura) ?
                             <button className='cobertura__boton'
                                 onClick={()=>{
                                     toogleCobertura();
